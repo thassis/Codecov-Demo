@@ -10,26 +10,16 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
-      - name: Test
-        uses: actions/checkout@v1
       - name: Build and Test
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
         run:  xcodebuild test -project CodecovDemo.xcodeproj -scheme CodecovDemo -destination 'platform=iOS Simulator,name=iPhone 11' -enableCodeCoverage YES build test
-      - run: |
-          bundle config path vendor/bundle
-          bundle install --without=documentation --jobs 4 --retry 3
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: get_branch
-      - run: bundle exec slather
-        env:
-          GIT_BRANCH: ${{ steps.get_branch.outputs.branch }}
-          CI_PULL_REQUEST: ${{ github.event.number }}
-          COVERAGE_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Bash
-        shell: bash
-        run: bash <(curl -s https://codecov.io/bash) -f cobertura.xml -X coveragepy -X gcov -X xcode
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v3
+        with:
+          verbose: true # optional (default = false)
+          xcode: true
 
