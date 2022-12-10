@@ -1,0 +1,11 @@
+# .slather.yml
+
+coverage_service: cobertura_xml
+xcodeproj: CodecovDemo.xcodeproj
+scheme: CodecovDemo
+configuration: TestedConfiguration
+source_directory: .
+output_directory: .
+ignore:
+  - ExamplePodCode/*
+  - ProjectTestsGroup/*
