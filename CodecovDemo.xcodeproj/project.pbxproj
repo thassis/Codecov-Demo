@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		642C9FE02945255000AB6F75 /* SystemPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 642C9FDF2945255000AB6F75 /* SystemPackage */; };
 		A6091FF325D5BFC100E905B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6091FF225D5BFC100E905B9 /* AppDelegate.swift */; };
 		A6091FF725D5BFC100E905B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6091FF625D5BFC100E905B9 /* ViewController.swift */; };
 		A6091FFA25D5BFC100E905B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6091FF825D5BFC100E905B9 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				642C9FE02945255000AB6F75 /* SystemPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,9 @@
 			dependencies = (
 			);
 			name = CodecovDemo;
+			packageProductDependencies = (
+				642C9FDF2945255000AB6F75 /* SystemPackage */,
+			);
 			productName = CodecovDemo;
 			productReference = A6091FEF25D5BFC100E905B9 /* CodecovDemo.app */;
 			productType = "com.apple.product-type.application";
@@ -216,6 +221,9 @@
 				Base,
 			);
 			mainGroup = A6091FE625D5BFC100E905B9;
+			packageReferences = (
+				642C9FDE2945255000AB6F75 /* XCRemoteSwiftPackageReference "swift-system" */,
+			);
 			productRefGroup = A6091FF025D5BFC100E905B9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -595,6 +603,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		642C9FDE2945255000AB6F75 /* XCRemoteSwiftPackageReference "swift-system" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-system.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		642C9FDF2945255000AB6F75 /* SystemPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 642C9FDE2945255000AB6F75 /* XCRemoteSwiftPackageReference "swift-system" */;
+			productName = SystemPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A6091FE725D5BFC100E905B9 /* Project object */;
 }
