@@ -10,8 +10,6 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
-      - name: Test
-        uses: actions/checkout@v1
       - name: Build and Test
         env:
           scheme: ${{ 'default' }}
@@ -19,4 +17,13 @@ jobs:
         run:  xcodebuild test -project CodecovDemo.xcodeproj -scheme CodecovDemo -destination 'platform=iOS Simulator,name=iPhone 11' -enableCodeCoverage YES build test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1.2.1
+      - uses: actions/checkout@master
+      - uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          files: ./coverage1.xml,./coverage2.xml # optional
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
 
