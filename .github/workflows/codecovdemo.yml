@@ -10,12 +10,18 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
+      - name: Set Default Scheme
+        run: |
+          scheme_list=$(xcodebuild -list -json | tr -d "\n")
+          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+          echo $default | cat >default
+          echo Using default scheme: $default
       - name: Test
         uses: actions/checkout@v1
       - name: Build and Test
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
-        run:  xcodebuild test -project CodecovDemo.xcodeproj -scheme CodecovDemo -destination "platform=$platform,name=$device" build test
+        run:  xcodebuild test -project CodecovDemo.xcodeproj -scheme CodecovDemo -destination 'platform=$platform,name=$device' build test
 
 
