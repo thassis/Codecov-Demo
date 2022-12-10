@@ -16,6 +16,7 @@ jobs:
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
-        run:  xcodebuild test -project CodecovDemo.xcodeproj -scheme CodecovDemo -destination 'platform=iOS Simulator,name=iPhone 11' build test
-
+        run:  xcodebuild test -project CodecovDemo.xcodeproj -scheme CodecovDemo -destination 'platform=iOS Simulator,name=iPhone 11' -enableCodeCoverage YES build test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1.2.1
 
