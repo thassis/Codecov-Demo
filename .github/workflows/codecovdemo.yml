@@ -11,7 +11,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Test
-      uses: actions/checkout@master
+        uses: actions/checkout@master
       - name: Build and Test
         env:
           scheme: ${{ 'default' }}
